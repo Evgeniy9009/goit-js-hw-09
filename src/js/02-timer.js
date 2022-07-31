@@ -3,7 +3,10 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const btnStart = document.querySelector('button[data-start]')
 const datetimePicker = document.querySelector('#datetime-picker')
-const days = 
+const days = document.querySelector('span[data-days]')
+const hours = document.querySelector('span[data-hours]')
+const minutes = document.querySelector('span[data-minutes]')
+const seconds = document.querySelector('span[data-seconds]')
 
 let delta = null
 let timerId = null
