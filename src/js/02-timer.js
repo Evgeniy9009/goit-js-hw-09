@@ -3,14 +3,17 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const btnStart = document.querySelector('button[data-start]')
 const datetimePicker = document.querySelector('#datetime-picker')
-const days = document.querySelector('span[data-days]')
-const hours = document.querySelector('span[data-hours]')
-const minutes = document.querySelector('span[data-minutes]')
-const seconds = document.querySelector('span[data-seconds]')
+
+const daysEl = document.querySelector('span[data-days]')
+const hoursEl = document.querySelector('span[data-hours]')
+const minutesEl = document.querySelector('span[data-minutes]')
+const secondsEl = document.querySelector('span[data-seconds]')
+
 
 let delta = null
 let timerId = null
 let deadline = null
+
 
 const options = {
   enableTime: true,
@@ -44,15 +47,20 @@ function getDeltaTime() {
     convertMs(delta)
 
   console.log(convertMs(delta))
+
+ 
+
+  if (delta < 1000) {
+    clearInterval(timerId)
+  }  
 }
 
 function timer() {
 
   timerId = setInterval(getDeltaTime, 1000)
+  btnStart.setAttribute("disabled", true)
   
   console.log(delta)
-
-
 }
 
 function convertMs(ms) {
@@ -71,6 +79,24 @@ function convertMs(ms) {
   // Remaining seconds
   const seconds = Math.floor((((ms % day) % hour) % minute) / second);
 
+   addLeadingZero ({ days, hours, minutes, seconds })
+
+  // daysEl.textContent = days < 10 ? `0${days}` : days
+  // hoursEl.textContent = hours < 10 ? `0${hours}` : hours
+  // minutesEl.textContent = minutes < 10 ? `0${minutes}` : minutes
+  // secondsEl.textContent = seconds < 10 ? `0${seconds}` : seconds
+
   return { days, hours, minutes, seconds };
 }
+
+function addLeadingZero ({ days, hours, minutes, seconds }) {
+  daysEl.textContent = String(days).padStart(2, '0')
+  hoursEl.textContent = String(hours).padStart(2, '0')
+  minutesEl.textContent = String(minutes).padStart(2, '0')
+  secondsEl.textContent = String(seconds).padStart(2, '0')
+}
+
+
+
+
 
