@@ -42,13 +42,10 @@ btnStart.addEventListener("click", timer)
 function getDeltaTime() {
   const currentTime = Date.now();
   delta = deadline - currentTime
-  console.log(delta)
+  // console.log(delta)
 
     convertMs(delta)
-
   console.log(convertMs(delta))
-
- 
 
   if (delta < 1000) {
     clearInterval(timerId)
