@@ -16,7 +16,7 @@ function createPromise(position, delayStart) {
     
     const shouldResolve = Math.random() > 0.3;
 
-      timerId = setTimeout(() => {
+      setTimeout(() => {
       if (shouldResolve) {
         resolve(`✅ Fulfilled promise ${position} in ${delayStart}ms`)
       }
