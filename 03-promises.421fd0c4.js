@@ -1,2 +1,0 @@
-const e=document.querySelector("form");let t=null,n=null;function r(e,t){return new Promise(((n,r)=>{const o=Math.random()>.3;setTimeout((()=>{o&&n(`✅ Fulfilled promise ${e} in ${t}ms`),r(`❌ Rejected promise ${e} in ${t}ms`)}),t)}))}e.addEventListener("submit",(function(e){e.preventDefault();const{delay:o,step:u,amount:l}=e.currentTarget;t=Number(o.value);for(let e=0;e<l.value;e+=1)n=e+1,t=Number(o.value)+Number(u.value)*e,r(n,t).then((e=>console.log(e))).catch((e=>console.log(e)));e.currentTarget.reset()}));
-//# sourceMappingURL=03-promises.421fd0c4.js.map
