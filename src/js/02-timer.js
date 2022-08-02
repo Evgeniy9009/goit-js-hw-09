@@ -3,6 +3,10 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const btnStart = document.querySelector('button[data-start]')
 const datetimePicker = document.querySelector('#datetime-picker')
+const inputLocal = document.querySelector("input[datetime-local]")
+const inputs = document.querySelectorAll('input')
+
+console.log(inputs)
 
 const daysEl = document.querySelector('span[data-days]')
 const hoursEl = document.querySelector('span[data-hours]')
@@ -28,14 +32,18 @@ const options = {
       getDeltaTime()
 
         if (delta < 0) {
-            btnStart.setAttribute('disabled', true)
-            window.alert("Please choose a date in the future")            
-        } else { btnStart.removeAttribute('disabled') }
-        },
-    };
+          btnStart.setAttribute('disabled', true)          
+          window.alert("Please choose a date in the future") 
+          return
+        } else {
+          
+          btnStart.removeAttribute('disabled')
+            
+          }
+  },
+};
 
 flatpickr(datetimePicker, options);
-btnStart.setAttribute('disabled', true)
 
 btnStart.addEventListener("click", timer)
 
@@ -49,18 +57,23 @@ function getDeltaTime() {
 
   if (delta < 1000) {
     clearInterval(timerId)
-  }  
+  }
 }
 
 function timer() {
 
   timerId = setInterval(getDeltaTime, 1000)
   btnStart.setAttribute("disabled", true)
+
+  inputs.setAttribute("disabled", true)
+  inputLocal.setAttribute("disabled", true)
+  datetimePicker.setAttribute("disabled", true)
   
   console.log(delta)
 }
 
 function convertMs(ms) {
+  
   // Number of milliseconds per unit of time
   const second = 1000;
   const minute = second * 60;
@@ -86,7 +99,8 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-function addLeadingZero ({ days, hours, minutes, seconds }) {
+function addLeadingZero({ days, hours, minutes, seconds }) {
+  if (delta < 0) { return }
   daysEl.textContent = String(days).padStart(2, '0')
   hoursEl.textContent = String(hours).padStart(2, '0')
   minutesEl.textContent = String(minutes).padStart(2, '0')

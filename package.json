@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://Evgeniy9009.github.io/goit-js-hw-09",
   "scripts": {
-    "start": "parcel src/*.html --port 3311",
+    "start": "parcel src/*.html --port 3333",
     "build": "parcel build src/*.html --public-url /goit-js-hw-09/"
   },
   "repository": {
@@ -19,7 +19,8 @@
   },
   "dependencies": {
     "flatpickr": "^4.6.13",
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.5"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
