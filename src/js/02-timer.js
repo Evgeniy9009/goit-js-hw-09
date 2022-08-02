@@ -3,10 +3,9 @@ import "flatpickr/dist/flatpickr.min.css";
 
 const btnStart = document.querySelector('button[data-start]')
 const datetimePicker = document.querySelector('#datetime-picker')
-const inputLocal = document.querySelector("input[datetime-local]")
-const inputs = document.querySelectorAll('input')
+// const inputLocal = document.querySelector("input[datetime-local]")
+// const inputs = document.querySelectorAll('input')
 
-console.log(inputs)
 
 const daysEl = document.querySelector('span[data-days]')
 const hoursEl = document.querySelector('span[data-hours]')
@@ -65,8 +64,8 @@ function timer() {
   timerId = setInterval(getDeltaTime, 1000)
   btnStart.setAttribute("disabled", true)
 
-  inputs.setAttribute("disabled", true)
-  inputLocal.setAttribute("disabled", true)
+  // inputs.setAttribute("disabled", true)
+  // inputLocal.setAttribute("disabled", true)
   datetimePicker.setAttribute("disabled", true)
   
   console.log(delta)
